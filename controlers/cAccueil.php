@@ -8,5 +8,7 @@
     if(!empty($gAction) && $gAction == "acc"){
 
         $view = "vAccueil";
+    }else{
+        header("location: /index.php?act=404");
     }
 

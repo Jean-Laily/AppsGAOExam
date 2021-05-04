@@ -8,5 +8,7 @@
     if(!empty($gAction) && $gAction == "odt"){
 
         $view = "vOrdinateur";
+    }else{
+        header("location: /index.php?act=404");
     }
 

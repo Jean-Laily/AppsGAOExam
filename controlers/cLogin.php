@@ -18,4 +18,6 @@ if(!empty($_GET['act']) && $_GET['act'] = "log"){
         
         header('location: index.php?act=acc&err=53');
     }
+}else{
+    header("location: /index.php?act=404");
 }

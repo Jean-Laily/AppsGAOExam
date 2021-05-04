@@ -8,4 +8,6 @@
     if(!empty($gAction) && $gAction == "db"){
 
         $view = "vDashboard";
+    }else{
+        header("location: /index.php?act=404");
     }

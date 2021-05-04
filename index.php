@@ -1,5 +1,11 @@
 <?php
     session_start();
+    include 'models/connexionBDD.php';
+    include 'models/toolsManager.php';
+
+    if($pdo == null){
+        header("location:./index.php?act=403");
+    }
 
     $view = "";
     //création du paramètre action 
@@ -27,6 +33,12 @@
             break;
             case "dcx" :
                 include './controlers/cDeconnexion.php';
+            break;
+            case "404" :
+                include './controlers/cErreur.php';
+            break;
+            case "403" :
+                include './controlers/cErreur.php';
             break;
         }
     }

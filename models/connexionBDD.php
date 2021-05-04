@@ -10,7 +10,7 @@ function getConnect(){
     $url = "localhost";             //@ip.... par ex : 127.0.0.1
     $port = '';                     //port ip ... par ex : "3306" par défaut
     $char = 'UTF8';                 //charset ... défini le type d'encodage souhaité
-    $bdd = 'appGAO';                // nom de la data base
+    $bdd = 'appsgao';                // nom de la data base
     $login = "root";                
     $pass = "";
 
@@ -26,8 +26,8 @@ function getConnect(){
         $pdo = new PDO($serveur, $login, $pass); 
 
     }catch(PDOException $e){
-        echo 'Échec de la connection : ';
-        // $pdo = null;
+        // echo 'Échec de la connection : ';
+        $pdo = null;
     }
 
     return $pdo;

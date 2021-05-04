@@ -8,5 +8,7 @@
     if(!empty($gAction) && $gAction == "utl"){
 
         $view = "vUtilisateur";
+    }else{
+        header("location: /index.php?act=404");
     }
 
