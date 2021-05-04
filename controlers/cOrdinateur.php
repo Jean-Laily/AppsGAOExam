@@ -5,10 +5,7 @@
     // }
 
     //blindage du paramètre act=odt
-    if(!empty($gAction) && $gAction == "odt"){
-
+    if(!empty($pAction) && $pAction == "odt"){
         $view = "vOrdinateur";
-    }else{
-        header("location: /index.php?act=404");
     }
 

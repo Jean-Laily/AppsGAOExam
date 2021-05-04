@@ -9,13 +9,13 @@
 
     $view = "";
     //création du paramètre action 
-    $gAction = isset($_GET['act'])? $_GET['act'] : null;
-    $gErreur = isset($_GET['err'])? $_GET['err'] : null;
+    $pAction = isset($_GET['act'])? $_GET['act'] : null;
+    // $pErreur = isset($_GET['err'])? $_GET['err'] : null;
 
     if(!isset($_GET['act'])){
         header("location:./index.php?act=acc");
     }else{
-        switch ($gAction){
+        switch ($pAction){
             case "acc" :
                 include './controlers/cAccueil.php';
             break;
@@ -39,6 +39,9 @@
             break;
             case "403" :
                 include './controlers/cErreur.php';
+            break;
+            default:
+                header("location:index.php?act=404");
             break;
         }
     }

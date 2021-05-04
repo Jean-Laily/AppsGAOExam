@@ -5,9 +5,6 @@
     // }
 
     //blindage du paramètre act=db
-    if(!empty($gAction) && $gAction == "db"){
-
+    if(!empty($pAction) && $pAction == "db"){
         $view = "vDashboard";
-    }else{
-        header("location: /index.php?act=404");
     }

@@ -1,7 +1,9 @@
-<section class="d-none d-md-none d-xl-block pAdmin">
+<section class="">
    <div class="container">
-      <div class="bloc p400 text-center">
+      <div class="text-center">
          <h1>Erreur 404</h1>
+         <p>La page que vous tentez accéder n'hesiste pas</p>
+         <br><a class="btn btn-primary" href="./index.php" type="button">retour</a><br>
          <p>Vous allez être redirigée dans 3 seconde</p>
       </div>
    </div>
