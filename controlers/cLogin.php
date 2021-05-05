@@ -1,6 +1,7 @@
 <?php
     include 'models/managerConnexion.php';
 
+    //récupère les valeurs du formulaire de login si il existe et blocage des tentatives de requête lors de l'envoie de formulaire
     $userID = (isset($_POST["identifiant"])) ? htmlspecialchars($_POST["identifiant"]) : "";
     $userPASS = (isset($_POST["password"])) ? htmlspecialchars($_POST["password"]) : "";
 

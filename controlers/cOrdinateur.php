@@ -1,8 +1,8 @@
 <?php
-    // on vérifie si l'utilisateur n'est pas déjà connecter si c'est le cas alors redirection au dashboard
-    // if(isset($_SESSION["userId"]) && isset($_SESSION["userPw"])){
-    //     header('location:index.php?act=db'); 
-    // }
+    //si la variable session[userId] && session[userPw] n'est pas existant alors redirection vers la page login
+    if(!isset($_SESSION["userId"]) && !isset($_SESSION["userPw"])){
+        header('location:index.php?act=acc'); 
+    }
 
     //blindage du paramètre act=odt
     if(!empty($pAction) && $pAction == "odt"){
