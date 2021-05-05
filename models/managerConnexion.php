@@ -1,5 +1,5 @@
 <?php
-
+    
     //création de la fonction permettant de contrôler si l'utilisateur est bien dans la BDD
     function controleUser($id,$pw){
         global $pdo;
