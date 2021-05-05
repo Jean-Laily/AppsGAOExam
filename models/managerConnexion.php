@@ -1,32 +1,22 @@
 <?php
 
-    $userIDArray = array("admin","toto");
-    $passIDArray = array("admin123", "toto123");
-
     //création de la fonction permettant de contrôler si l'utilisateur est bien dans la BDD
     function controleUser($id,$pw){
-
-        $userValide = false;
-        $idValide = false;
-        $pwValide = false;
-
-        //on regarde dans la BDD si l'user existe en comparant toute les occurrences de la table user 
-        //on parcourt le tableau d'id et vérifie s'il correspond avec l'id entré par l'utilisateur (version temporaire ici)
-        foreach($userIDArray as $value){
-            if($id == $value){
-              $idValide = true;  
-            }
-        }
-
-        foreach($passIDArray as $value){
-            if($pw == $value){
-                $pwValide = true;
-            }
-        }
-
-        if(isset($idValide) && isset($pwValide)){
-            $userValide = true;
-        }
+        global $pdo;
         
-        return $userValide;
+        $sql  = 'SELECT prenomSecretaire
+                    FROM centreculturel
+                    WHERE identifiant = :id AND motDePasse = :pw';
+
+        //on déclare ici les paramètres équivalent à un bindParam
+        $param = [ 'id' => $id,
+                   'pw' => $pw ];
+
+        //on
+        $request = $pdo->prepare($sql);
+        $request->execute($param);
+        
+        $result = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return (count($result) == 1); //retourne 0 si vide et 1 si ok
     }

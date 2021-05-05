@@ -8,7 +8,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Se connecter</h3></div>
                                     <div class="card-body">
-                                        <form action="./index.php?act=log" method="post">
+                                        <form action=" index.php?act=log" method="post">
                                             <div class="form-group">
                                                 <label class="large mb-1 font-weight-bold" for="inputUsername">Nom utilisateur</label>
                                                 <input class="form-control py-4" name="userID" id="inputUsername" type="text" placeholder="Entrer un nom d'utilisateur" />

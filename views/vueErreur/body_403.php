@@ -1,6 +1,6 @@
-<section class="d-none d-md-none d-xl-block pAdmin">
+<section class="">
    <div class="container">
-      <div class="bloc p400 text-center">
+      <div class="text-center">
          <h1>Erreur 403</h1>
          <p>Vous allez être redirigée dans 3 seconde</p>
       </div>
