@@ -45,3 +45,23 @@
     function deleteAttr(){
 
     }
+
+      /**
+     * Fonction qui permet de récupérer toute les attributions existante
+     * @return $data array_associatif
+     */
+    function recupNameAdmin(){
+        global $pdo;
+
+        $sql = ' SELECT * 
+                    FROM center_cult';
+
+        $requetes = $pdo->prepare($sql);
+        $requetes->execute();
+
+        $data =  $requetes->fetchAll(PDO::FETCH_ASSOC); 
+        
+        // var_dump($data);
+        // exit;
+        return $data;
+    }

@@ -10,6 +10,5 @@
     if(!empty($pAction) && $pAction == "db"){
 
         $tabAttr = readAttr();
-
         $view = "vDashboard";
     }

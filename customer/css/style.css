@@ -1,3 +1,26 @@
 #dropdownMenuButton{
   border-bottom: black 0px solid;
 }
+
+.sb-sidenav-menu-heading{
+  font-size: 17px !important;
+  border-bottom: white 1px solid;
+}
+
+.card:not([class*=bg-]) .card-header {
+  color: #0061f2;
+}
+.card .card-header {
+  font-weight: 500;
+}
+.card-header:first-child {
+  border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-waves .card-body {
+  background-image: url(../../assets/media/bg-waves.svg);
+}
+.card-waves .card-body, .card-angles .card-body {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}

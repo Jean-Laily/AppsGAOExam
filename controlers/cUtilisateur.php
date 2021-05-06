@@ -8,6 +8,7 @@
 
     //blindage du paramètre act=utl
     if(!empty($pAction) && $pAction == "utl"){
+        //lecture des utilisateurs
         $tabUser = readUser();
         
         $view = "vUtilisateur";

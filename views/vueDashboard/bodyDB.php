@@ -4,18 +4,15 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">Gestion Attribution</h1>
                         <br>
-                        <div class="card mb-4">
+                        <div class="card card-waves ">
                             <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
                                 Liste d'attribution des postes
                             </div>
                             <div class="card-body">
-                                <div class="float-right" >
-                                    <p class="font-weight-bold">Ajouter
-                                        <a href="#" style="font-size: 0.5rem;">
-                                            <i class="fas fa-plus-square fa-5x" style="color:green"></i>
-                                        </a>
-                                    </p>
+                                <div class="float-right font-weight-bold " >
+                                    <a href="#" type="button">
+                                        <i class="fas fa-plus-square fa-3x " style="color:green"> </i>
+                                    </a>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

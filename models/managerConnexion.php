@@ -1,11 +1,14 @@
 <?php
     
     //création de la fonction permettant de contrôler si l'utilisateur est bien dans la BDD
+    /**
+     * Fonction permettant de controler si l'id et mdp fourni est correspondant à celui de la database
+     * @return count 0 ou 1 selon le résultat
+     * @param id => identifiant user
+     * @param pw => password user
+     */
     function controleUser($id,$pw){
-        
         global $pdo;
-        //Appel de la fonction controle password (voir description de la fonction)
-        $passControler = controlePass($pw);
 
         $sql  = 'SELECT prenomSecretaire
                     FROM centre_cult
@@ -13,15 +16,12 @@
 
         //on déclare ici les paramètres équivalent à un bindParam
         $param = [ 'id' => $id,
-                   'pw' => $passControler ];
+                   'pw' => $pw ];
 
         $request = $pdo->prepare($sql);
         $request->execute($param);
         
         $result = $request->fetchAll(PDO::FETCH_ASSOC);
-
-        // var_dump($result);
-        // exit;
 
         return (count($result) == 1); //retourne 0 si vide et 1 si ok
     }
@@ -43,10 +43,12 @@
 
         $data = $requete->fetchAll(PDO::FETCH_ASSOC);
 
+        //Lecture du tableau et stockage du resultat
         foreach($data as $values){
             $passHash = $values['pass'] ;
         }
-        //comparaison entre les deux mot de passe
+
+        //comparaison des mot de passe
         if(password_verify( $pw, $passHash )){
             $passCtrl = $passHash;
         };

@@ -25,11 +25,20 @@
             case "db" :
                 include './controlers/cDashboard.php';
             break;
+            case "atr" :
+                include './controlers/cCrudAttr.php';
+            break;
             case "utl" :
                 include './controlers/cUtilisateur.php';
             break;
+            case "crU" :
+                include './controlers/cCrudUser.php';
+            break;
             case "odt" :
                 include './controlers/cOrdinateur.php';
+            break;
+            case "crO" :
+                include './controlers/cCrudOrdi.php';
             break;
             case "dcx" :
                 include './controlers/cDeconnexion.php';
