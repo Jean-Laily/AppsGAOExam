@@ -38,26 +38,19 @@ CREATE TABLE utilisateur(
    PRIMARY KEY(numUtil)
 );
 
-CREATE TABLE dateDuJour(
-   id_date DATE,
-   libelle VARCHAR(50) NOT NULL,
-   PRIMARY KEY(id_date)
-);
-
 CREATE TABLE creneau_hor(
    numCreneau INT,
-   creneauDebut INT NOT NULL,
+   creneauDebut TIME NOT NULL,
    creneauFin TIME NOT NULL,
    libelle VARCHAR(100) NOT NULL,
-   id_date DATE NOT NULL,
-   PRIMARY KEY(numCreneau),
-   FOREIGN KEY(id_date) REFERENCES dateDuJour(id_date)
+   PRIMARY KEY(numCreneau)
 );
 
 CREATE TABLE attribuer(
    numPoste INT,
    numUtil INT,
    numCreneau INT,
+   dateJour DATE NOT NULL,
    PRIMARY KEY(numPoste, numUtil, numCreneau),
    FOREIGN KEY(numPoste) REFERENCES post_info(numPoste),
    FOREIGN KEY(numUtil) REFERENCES utilisateur(numUtil),
@@ -66,16 +59,9 @@ CREATE TABLE attribuer(
 
 
 INSERT INTO centre_cult (numID, nomCentre, nomSecretaire, prenomSecretaire, hrsOuvert, hrsFermer, identifiant, password) 
-   VALUES (1, 'culturelCenter', 'Doe', 'Jane', '08:00:00', '16:00:00', 'admin', '$2y$14$NXCdYb4b7YKv.3blb.RvPuYmOuD9r8RPpjg98Y8M9f9EnSo.ATwXq');
-
-INSERT INTO dateDuJour (id_date, libelle)
+   VALUES (1, 'culturelCenter', 'Doe', 'Jane', '08:00:00', '16:00:00', 'admin', '$2y$14$VK35Y/ilOB1UFVjCmf1gNeVcdHUabunatYZRJwiXINLE4H3jjZAlS');
 
 INSERT INTO creneau_hor (numCreneau, creneauDebut, creneauFin, libelle)
-   VALUES(1,'08:00:00', '09:00:00', '8h-9h',),
-         (2,'09:00:00', '10:00:00', '9h-10h'),
-         (3,'10:00:00', '11:00:00', '10h-11h'),
-         (4,'11:00:00', '12:00:00', '11h-12h'),
-         (5,'13:00:00', '14:00:00', '13h-14h'),
-         (6,'14:00:00', '15:00:00', '14h-15h'),
-         (7,'15:00:00', '16:00:00', '15h-16h');
+   VALUES(1,'08:00:00', '09:00:00', '8h-9h'),(2,'09:00:00', '10:00:00', '9h-10h'),(3,'10:00:00', '11:00:00', '10h-11h'),(4,'11:00:00', '12:00:00', '11h-12h'),(5,'13:00:00', '14:00:00', '13h-14h'),(6,'14:00:00', '15:00:00', '14h-15h'),(7,'15:00:00', '16:00:00', '15h-16h');
 
+INSERT INTO 
