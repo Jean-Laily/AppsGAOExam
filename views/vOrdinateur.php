@@ -5,6 +5,6 @@
     include 'structureHTML/sideNavHTML.php';
     
     include 'vueOrdinateur/bodyOrdi.php';
-    include 'vueOrdinateur/footerOrdi.php';
 
+    include 'structureHTML/footerHTML.php';
     include 'structureHTML/basHTML.php';

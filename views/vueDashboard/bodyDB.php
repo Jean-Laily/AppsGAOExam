@@ -22,72 +22,31 @@
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
-                                                <th>Pc attribuer</th>
+                                                <th>Horaire</th>
+                                                <th>Attribué</th>
                                                 <th>Nom</th>
                                                 <th>Prénom</th>
-                                                <th>Créneau horaire</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <!-- <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </tfoot> -->
-                                        <tbody> <!-- a transformer en tableau dynamique dès que possible-->
-                                            <tr>
-                                                <td>25/04/2021</td>
-                                                <td>PC01</td>
-                                                <td>Edinburgh</td>
-                                                <td>Judi</td>
-                                                <td>8h-9h <i class="fas fa-ban"style="color:black" ></i></td>
-                                                <td class="text-center"><a href="#"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>25/04/2021</td>
-                                                <td>PC01</td>
-                                                <td>Winters</td>
-                                                <td>Garrett</td>
-                                                <td>9h-10h</td>
-                                                <td class="text-center"><a href="#" class=""><i class="fas fa-edit fa-2x"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x"></i></a> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>25/04/2021</td>
-                                                <td>PC02</td>
-                                                <td>Cox</td>
-                                                <td>Ashton</td>
-                                                <td>8h-9h</td>
-                                                <td class="text-center"><a href="#" class=""><i class="fas fa-edit fa-2x"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x"></i></a> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>26/04/2021</td>
-                                                <td>PC04</td>
-                                                <td>Toxi</td>
-                                                <td>Broony</td>
-                                                <td>11h-12h</td>
-                                                <td class="text-center"><a href="#" class=""><i class="fas fa-edit fa-2x"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x"></i></a> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>26/04/2021</td>
-                                                <td>PC01</td>
-                                                <td>Xiomi</td>
-                                                <td>Toto</td>
-                                                <td>14h-15h</td>
-                                                <td class="text-center"><a href="#" class=""><i class="fas fa-edit fa-2x"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x"></i></a> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>27/04/2021</td>
-                                                <td>PC03</td>
-                                                <td>Ash</td>
-                                                <td>Breed</td>
-                                                <td>10h-11h</td>
-                                                <td class="text-center"><a href="#" class=""><i class="fas fa-edit fa-2x"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x"></i></a> </td>
-                                            </tr>
+                                        <tbody> <!-- a transformer en tableau dynamique dès que possible -->
+                                            <?php $tabAttr;
+                                            //formatter la date reçus par Mysql en version FR
+                                            $datefmt = new IntlDateFormatter('fr_FR', NULL, NULL, NULL, NULL, 'dd MMMM yyyy');
+                                            //parcourt l'ensemble du tableau attr
+                                            foreach($tabAttr as $values){
+                                                $date = date_create($values['dateJour']);
+                                                
+                                                echo' <tr>
+                                                        <td>'.$datefmt->format($date).'</td>                                                
+                                                        <td>'.$values['libelle'].'</td>
+                                                        <td>'.$values['nomPc'].'</td>
+                                                        <td>'.$values['nomUtil'].'</td>
+                                                        <td>'.$values['prenomUtil'].'</td>
+                                                        <td class="text-center"><a href="#"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a></td>
+                                                    </tr>';
+                                            } 
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

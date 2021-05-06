@@ -5,6 +5,6 @@
     include 'structureHTML/sideNavHTML.php';
     
     include 'vueUtilisateur/bodyUser.php';
-    include 'vueUtilisateur/footerUser.php';
 
+    include 'structureHTML/footerHTML.php';
     include 'structureHTML/basHTML.php';

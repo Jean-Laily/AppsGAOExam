@@ -5,6 +5,6 @@
     include 'structureHTML/sideNavHTML.php';
     
     include 'vueDashboard/bodyDB.php';
-    include 'vueDashboard/footerDB.php';
 
+    include 'structureHTML/footerHTML.php';
     include 'structureHTML/basHTML.php';
