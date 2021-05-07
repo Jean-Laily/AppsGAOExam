@@ -34,7 +34,7 @@ CREATE TABLE utilisateur(
    nomUtil VARCHAR(100) NOT NULL,
    prenomUtil VARCHAR(100) NOT NULL,
    adresse VARCHAR(255) NOT NULL,
-   codeP INT NOT NULL,
+   codeP VARCHAR(25) NOT NULL,
    ville VARCHAR(100) NOT NULL,
    date_crea DATETIME NOT NULL,
    email VARCHAR(100) NOT NULL,

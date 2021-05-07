@@ -9,57 +9,41 @@
     function createUser($nomUser, $prenomUser, $adressUser, $cpUser, $citieUser, $mailUser, $passUser){
         global $pdo;
         
-        //defini la timezone
+        //défini la timezone
         date_default_timezone_set('Asia/Muscat');
-        //génère la date de création du jour
+        //génère la date de création du jour et initialisation des variables
         $today = date("Y-m-d H:i:s");
-        $delete = 0;
+        $supprimer = 0;
         $newVersion = 0;
-        $id_auto = 0; 
-        $estOk = "";
+        $estOk = false;
 
-        //condition de vérification lors de la réception des données si non vide alors on insert dans la bdd
-        if(!empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser) && !empty($mailUser) && !empty($passUser)){
+        //condition de vérification lors de la réception des données si c'est pas vide alors on insert dans la bdd
+        try{
             $newVersion ++;
             
-            // //partie test des données
-            // echo'<pre>';
-            //     print_r($nomUser.'<br/>'. $prenomUser.'<br/>'.$adressUser.'<br/>'.$cpUser.'<br/>'.$citieUser.'<br/>'. $today .'<br/>'.$mailUser.'<br/>'.$passUser .'<br/>'.$delete.'<br/>'.$newVersion.'<br/>');
-            // echo'</pre>';
-            // exit;
-            
-            $sql = 'INSERT INTO utilisateur VALUES
-                    (:id, :nom, :prenom, :adresse, :cp, :ville, :dateCrea, :mail, :pass, :suppr, :vers)';
-            // INSERT INTO `utilisateur`(`nomUtil`, `prenomUtil`, `adresse`, `codeP`, `ville`, `date_crea`, `email`, `passW`, `supprimer`, `version`) VALUES ("TRUST","Mate","1 rue labas","97404","laville","2020-11-25 00:00:00","mate@mail","azerty",0,1)
+            $sql = "INSERT INTO utilisateur (nomUtil, prenomUtil, adresse, codeP, ville, date_crea, email, passW, supprimer, versionUtil) VALUES (:nom ,:prenom ,:adresse ,:cp ,:ville ,:dateCrea ,:mail, :pass,:suppr ,:vers)";
             
             $request = $pdo->prepare($sql);
 
-            $request->bindParam(':id' , $id_auto);
-            $request->bindParam(':nom' , $nomUser);
-            $request->bindParam(':prenom' , $prenomUser);
-            $request->bindParam(':adresse' , $adressUser);
-            $request->bindParam(':cp' , $cpUser);
-            $request->bindParam(':ville' , $citieUser);
-            $request->bindParam(':dateCrea' , $today);
-            $request->bindParam(':mail' , $mailUser);
-            $request->bindParam(':pass' , $passUser);
-            $request->bindParam(':suppr' , $delete);
-            $request->bindParam(':vers' , $newVersion);
-            
+            $request->bindParam(':nom' , $nomUser, PDO::PARAM_STR);
+            $request->bindParam(':prenom' , $prenomUser, PDO::PARAM_STR);
+            $request->bindParam(':adresse' , $adressUser, PDO::PARAM_STR);
+            $request->bindParam(':cp' , $cpUser, PDO::PARAM_STR);
+            $request->bindParam(':ville' , $citieUser,PDO::PARAM_STR);
+            $request->bindParam(':dateCrea' , $today,PDO::PARAM_STR);
+            $request->bindParam(':mail' , $mailUser,PDO::PARAM_STR);
+            $request->bindParam(':pass' , $passUser,PDO::PARAM_STR);
+            $request->bindParam(':suppr' , $supprimer,PDO::PARAM_INT);
+            $request->bindParam(':vers' , $newVersion,PDO::PARAM_INT);
             
             $request->execute();
-            
-            // // //partie test des données
-            // echo'<pre>';
-            //     var_dump($request);
-            // echo'</pre>';
+            // var_dump($request);
             // exit;
             $estOk = true;
-            
-        }else{
-
-            $estOk = false;
-        }
+     
+        }catch(PDOException $e) {
+	    	echo $sql . "<br>" . $e->getMessage();
+	    }
 
         return $estOk;
     }
@@ -68,7 +52,7 @@
      * Fonction qui permet de récupérer toutes les utilisateurs existants
      * @return $data array_associatif
      */
-    function readUser(){
+    function getAllUser(){
         global $pdo;
 
         $sql = ' SELECT * 
@@ -80,18 +64,148 @@
 
         $data =  $requetes->fetchAll(PDO::FETCH_ASSOC); 
         
-        // var_dump($data);
-        // exit;
-
         return $data;
     }
 
-    function updateUser(){
+     /**
+     * Fonction qui permet de récupérer toutes les utilisateurs existants
+     * @return $data array_associatif
+     */
+    function getUserID($id){
+        global $pdo;
 
+        $sql = ' SELECT * 
+                    FROM utilisateur
+                    WHERE supprimer = 0 AND numUtil = :idUser';
+
+        $requetes = $pdo->prepare($sql);
+        $requetes->bindParam(':idUser' , $id, PDO::PARAM_INT);
+        $requetes->execute();
+
+        $data =  $requetes->fetchAll(PDO::FETCH_ASSOC); 
+        
+        return $data;
     }
 
 
-    function deleteUser(){
+    /**
+     * Permet la modification des informations d'un utilisateur
+     * 
+     */
+    function updateUserFiche1($id, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser){
+        global $pdo;
 
+        $userTarget = getUserID($id);
+        $recupVersion = "";
+
+        foreach($userTarget as $value){
+            $recupVersion = $value['version'];
+        }
+
+        $estOk = false;
+
+        //condition de vérification lors de la réception des données si c'est pas vide alors on insert dans la bdd
+        try{
+            $recupVersion ++;
+            var_dump($id, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
+            exit;
+            
+            $sql = "UPDATE utilisateur 
+                        SET nomUtil = :nom , prenomUtil = :prenom, adresse = :adres, codeP = :cp, ville = :citie, versionUtil = :vers
+                        WHERE numUtil = :idUser";
+
+        // UPDATE utilisateur  
+        // SET nomUtil = "Doe" ,prenomUtil = "Jack", adresse = "1 rue le chemin", codeP = "97440", ville = "Saint-andré", versionUtil = 2
+        // WHERE numUtil = 1
+            
+            $request = $pdo->prepare($sql);
+
+            $request->bindParam(':nom' , $nomUser, PDO::PARAM_STR);
+            $request->bindParam(':prenom' , $prenomUser, PDO::PARAM_STR);
+            $request->bindParam(':adres' , $adressUser, PDO::PARAM_STR);
+            $request->bindParam(':cp' , $cpUser, PDO::PARAM_STR);
+            $request->bindParam(':citie' , $citieUser,PDO::PARAM_STR);
+            $request->bindParam(':vers' , $newVersion,PDO::PARAM_INT);
+            $request->bindParam(':idUser',$id, PDO::PARAM_INT);
+            
+            $request->execute();
+
+            $estOk = true;
+     
+        }catch(PDOException $e) {
+	    	echo $sql . "<br>" . $e->getMessage();
+	    }
+
+        return $estOk;
     }
+
+
+    /**
+     * Permet la modification de l'email et le mot de pass de l'utilisateur d'un utilisateur 
+     * 
+     */
+    function updateUserFiche2($id = null,$mailUser, $passUser){
+        global $pdo;
+
+        $estOk = false;
+
+        //condition de vérification lors de la réception des données si c'est pas vide alors on insert dans la bdd
+        try{
+            $newVersion ++;
+            
+            $sql = "UPDATE utilisateur 
+                        SET email = :mail, passW = :pass,
+                        WHERE numUtil = :idUser";
+            
+            $request = $pdo->prepare($sql);
+
+            $request->bindParam(':mail' , $mailUser,PDO::PARAM_STR);
+            $request->bindParam(':pass' , $passUser,PDO::PARAM_STR);
+            $request->bindParam(':idUser',$id, PDO::PARAM_INT);
+            
+            $request->execute();
+
+            $estOk = true;
+     
+        }catch(PDOException $e) {
+	    	echo $sql . "<br>" . $e->getMessage();
+	    }
+
+        return $estOk;
+        
+    }
+
+
+    /**
+     * M: Requête permettant la suppression (non définitif) d'un utilisateur 
+     * O: @return NULL
+     * I: @param id => défini le numero de l'utilisateur à supprimer
+     * 
+     */
+    function deleteUser($id){
+        global $pdo;
+        //init variable
+        $supprimer = 1;
+        $msg = false;
+
+        try{
+            $deleteUser = 'UPDATE utilisateur 
+                                SET supprimer = :suppr 
+                                WHERE numUtil = :idUser ';
+
+            $requete = $pdo->prepare($deleteUser);
+
+            //préparation avec méthode bindParam la liaison entre le marqueur et la variable
+            $requete->bindParam(':suppr',$supprimer, PDO::PARAM_INT );
+            $requete->bindParam(':idUser',$id, PDO::PARAM_INT);
+
+            $requete->execute();
+            $msg = true;
+
+        }catch(Exception $e){
+            echo 'Échec de la requête ';
+        }
+        return $msg ;
+    } 
+
 

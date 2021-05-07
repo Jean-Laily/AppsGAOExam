@@ -37,7 +37,10 @@
                                                     <td>'.$values['adresse'].'</td>
                                                     <td>'.$values['codeP'].'</td>
                                                     <td>'.$values['ville'].'</td>
-                                                    <td class="text-center"><a href="index.php?act=crU&req=update"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> <a href="index.php?act=crU&req=delete" class=""><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a></td>
+                                                    <td class="text-center">
+                                                        <a href="index.php?act=crU&req=update&num='.$values['numUtil'].' "><i class="fas fa-edit fa-2x" style="color:orange"></i></a> 
+                                                        <a data-delete-url="index.php?act=utl&req=delete&num='.$values['numUtil'].' " type="button" data-toggle="modal" data-target="#modalSuppr" ><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
+                                                    </td>
                                                 </tr>';
                                         }
                                     ?>
@@ -47,3 +50,25 @@
                         </div>
                     </div>
                 </main>
+
+
+<!-- ************************  PARTIE SUPPRESSION VIA MODAL *************************** -->
+<!-- Modal -->
+<div class="modal fade" id="modalSuppr" tabindex="-1" role="dialog" aria-labelledby="modalSupprLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalSupprLabel">Default Bootstrap Modal</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Attention vous êtes sur le point de supprimer un utilisateur!</p>
+                <p>Etes-vous sur de vouloir le supprimer?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                <a id="validID" class="btn btn-primary" type="button">Supprimer</a>
+            </div>
+        </div>
+    </div>
+</div>

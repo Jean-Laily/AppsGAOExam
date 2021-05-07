@@ -8,8 +8,30 @@
 
     //blindage du paramètre act=utl
     if(!empty($pAction) && $pAction == "utl"){
-        //lecture des utilisateurs
-        $tabUser = readUser();
+        //réception du 2em paramètre get pour le CRUD
+        $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
+        $id_user =  isset($_GET['num']) ? $_GET['num'] : null;
+        
+        //lecture des tous utilisateurs
+        $tabUser = getAllUser();
+
+        if(!empty($pRequete)){
+            switch($pRequete){
+                case 'delete':
+                    
+                    //condition pour la requête delete
+                    if(!empty($id_user)){
+                        $supprOk = deleteUser($id_user);
+                        if($supprOk){
+                            header("location: index.php?act=utl&cfm=12");
+                        }
+                    }
+                break;
+                default:
+                    header("location: index.php?act=404");
+                break;
+            }
+        }
         
         $view = "vUtilisateur";
     }

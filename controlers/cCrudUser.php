@@ -8,8 +8,13 @@
 
     //blindage du paramètre act=crU
     if(!empty($pAction) && $pAction == "crU"){
+        
         //réception du 2em paramètre get pour le CRUD
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
+        $id_user =  isset($_GET['num']) ? $_GET['num'] : null;
+        
+        //lecture des tous utilisateurs
+        $tabUserId = getUserID($id_user);
 
         //réception des variables en post du formulaire
         $nomUser = isset($_POST['nomUser']) ? htmlspecialchars($_POST['nomUser']) : null;
@@ -21,43 +26,42 @@
         $passUser = isset($_POST['passUser']) ? htmlspecialchars($_POST['passUser']) : null;
 
         if(!empty($pRequete)){
-
+            
             switch($pRequete){
+                
                 case 'create':
-                    if(!empty($nomUser)){
-                        //appel de la fonction pour la création d'un utilisateur
-                        $bool = createUser($nomUser, $prenomUser, $adressUser, $cpUser, $citieUser, $mailUser, $passUser);
-
-                        if($bool){
+                    //on controle que toute les variables en post ont bien une valeur
+                    if(!empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser) && !empty($mailUser) && !empty($passUser)){
+                        //appel de la fonction pour la création d'un utilisateur en lui passant tous les paramètre nécessaire
+                        $requeteOk = createUser($nomUser, $prenomUser, $adressUser, $cpUser, $citieUser, $mailUser, $passUser);
+                        
+                        if($requeteOk){ // est vrai alors on retourne vers la page des utilisateurs
                             header("location: index.php?act=utl&cfm=10");
-                        }else{
-                            header("location: index.php?act=utl&err=005");
                         }
                     }
-                break;
-
-                case 'update':
+                    break;
+                    
+                    case 'update':
                     //condition pour la requête update
-                    if(!empty($pCoDuree) && !empty($pCatProd) && !empty($pPrixLoc) ){
-                        $bool = getUpdate($pCoDuree, $pCatProd, $pPrixLoc);
-                        if($bool){
-                            header("location: index.php?act=tar&ms=13");
-                        }else{
-                            header("location: index.php?act=tar&err=115");
+                    if(!empty($id_user) && !empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser)){
+                        
+                        var_dump($id_user, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
+                        exit;
+                        
+                        //appel de la fonction updateFiche pour la 1er partie du formulaire
+                        $infoUserValid = updateUserFiche1($id_user, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
+                        if($infoUserValid){
+                            header("location: index.php?act=utl&cfm=11");
+                        }
+                    }
+
+                    if(!empty($mailUser) && !empty($passUser)){
+                        $infoUserValid2 = updateUserFiche2($id_user, $mailUser,$passUser);
+                        if($infoUserValid2){
+                            header("location: index.php?act=utl&cfm=13");
                         }
                     }
                     
-                break;
-                case 'delete':
-                    //condition pour la requête delete
-                    if(!empty($pCoDuree) && !empty($pCatProd)){
-                        $bool = getDelete($pCoDuree, $pCatProd);
-                        if($bool){
-                            header("location: index.php?act=tar&ms=14");
-                        }else{
-                            header("location: index.php?act=tar&err=120");
-                        }
-                    }
                 break;
                 default:
                     header("location: index.php?act=404");
