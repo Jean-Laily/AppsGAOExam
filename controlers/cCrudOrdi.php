@@ -1,5 +1,5 @@
 <?php
-    include 'models/managerCrudUser.php';
+    include 'models/managerCrudOrdi.php';
 
     //si la variable session[userId] && session[userPw] n'est pas existant alors redirection vers la page login
     if(!isset($_SESSION["userId"]) && !isset($_SESSION["userPw"])){

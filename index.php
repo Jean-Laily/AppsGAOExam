@@ -10,7 +10,7 @@
     $view = "";
     //création du paramètre action 
     $pAction = isset($_GET['act'])? $_GET['act'] : null;
-    // $pErreur = isset($_GET['err'])? $_GET['err'] : null;
+    $pErreur = isset($_GET['err'])? $_GET['err'] : null;
 
     if(!isset($_GET['act'])){
         header("location:./index.php?act=acc");

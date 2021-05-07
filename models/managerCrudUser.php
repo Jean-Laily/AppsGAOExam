@@ -95,11 +95,11 @@
     function updateUserFiche1($id, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser){
         global $pdo;
 
-        $userTarget = getUserID($id);
         $recupVersion = "";
-
+        $userTarget = getUserID($id);
         foreach($userTarget as $value){
-            $recupVersion = $value['version'];
+            
+            $recupVersion = $value['versionUtil'];
         }
 
         $estOk = false;
@@ -107,9 +107,7 @@
         //condition de vérification lors de la réception des données si c'est pas vide alors on insert dans la bdd
         try{
             $recupVersion ++;
-            var_dump($id, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
-            exit;
-            
+
             $sql = "UPDATE utilisateur 
                         SET nomUtil = :nom , prenomUtil = :prenom, adresse = :adres, codeP = :cp, ville = :citie, versionUtil = :vers
                         WHERE numUtil = :idUser";
@@ -125,7 +123,7 @@
             $request->bindParam(':adres' , $adressUser, PDO::PARAM_STR);
             $request->bindParam(':cp' , $cpUser, PDO::PARAM_STR);
             $request->bindParam(':citie' , $citieUser,PDO::PARAM_STR);
-            $request->bindParam(':vers' , $newVersion,PDO::PARAM_INT);
+            $request->bindParam(':vers' , $recupVersion,PDO::PARAM_INT);
             $request->bindParam(':idUser',$id, PDO::PARAM_INT);
             
             $request->execute();

@@ -58,6 +58,9 @@
                                 <div class="card-body">
                                     <form action=" index.php?act=crU&req=update" method="post">
                                         <div class="form-group">
+                                            <input class="form-control py-4 d-none" name="idUser" type="text" value=" <?php echo $valeur['numUtil'] ?> " />
+                                        </div>
+                                        <div class="form-group">
                                             <label class="large mb-1 font-weight-bold" for="nomUtilisateur">Nom</label>
                                             <input class="form-control py-4" name="nomUser" id="nomUtilisateur" type="text" value=" <?php echo $valeur['nomUtil'] ?> " required />
                                         </div>
