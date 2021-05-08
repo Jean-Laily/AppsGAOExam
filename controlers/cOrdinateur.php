@@ -10,19 +10,25 @@
     if(!empty($pAction) && $pAction == "odt"){
         //réception du 2em paramètre get pour le CRUD
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
-        $id_user =  isset($_GET['num']) ? $_GET['num'] : null;
+        $id_ordi =  isset($_GET['num']) ? $_GET['num'] : null;
 
-        $tabOrdi = readOrdi();
+        //affichage liste Poste
+        $tabOrdiOk = getAllOrdiWithOk();
+        $tabOrdiKo = getAllOrdiWithKo();
         
+
         if(!empty($pRequete)){
+
             switch($pRequete){
+
                 case 'delete':
-                    
                     //condition pour la requête delete
-                    if(!empty($id_user)){
-                        $supprOk = deleteUser($id_user);
+                    if(!empty($id_ordi)){
+                        
+                        $supprOk = deleteOrdi($id_ordi);
+
                         if($supprOk){
-                            header("location: index.php?act=utl&cfm=12");
+                            header("location: index.php?act=odt&cfm=12");
                         }
                     }
                 break;

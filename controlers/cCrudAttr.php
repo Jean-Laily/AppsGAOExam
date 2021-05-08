@@ -7,7 +7,7 @@
     }
 
     //blindage du paramètre act=crU
-    if(!empty($pAction) && $pAction == "crU"){
+    if(!empty($pAction) && $pAction == "crA"){
         
         //réception du 2em paramètre get pour le CRUD
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;

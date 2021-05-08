@@ -14,7 +14,7 @@
         $id_user =  isset($_GET['num']) ? $_GET['num'] : null;
         
         //lecture des tous utilisateurs
-        $tabUserId = getUserID($id_user);
+        $tabUserId = getAllInfoWithUserID($id_user);
 
         //réception des variables en post du formulaire
         $idUsers = isset($_POST['idUser']) ? htmlspecialchars($_POST['idUser']) : null;
@@ -40,9 +40,9 @@
                             header("location: index.php?act=utl&cfm=10");
                         }
                     }
-                    break;
+                break;
                     
-                    case 'update':
+                case 'update':
                     //condition pour la requête update
                     if(!empty($idUsers) && !empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser)){
 

@@ -9,11 +9,9 @@
                                 Liste d'attribution des postes
                             </div>
                             <div class="card-body">
-                                <div class="float-right font-weight-bold " >
-                                    <a href="#" type="button">
-                                        <i class="fas fa-plus-square fa-3x " style="color:green"> </i>
-                                    </a>
-                                </div>
+                                <p class="font-weight-bold " >
+                                    <a href="#" type="button" class="btn btn-success"><i class="fas fa-plus-square"></i> Attribuer</a>
+                                </p>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -23,7 +21,7 @@
                                                 <th>Attribué</th>
                                                 <th>Nom</th>
                                                 <th>Prénom</th>
-                                                <th>Action</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody> <!-- a transformer en tableau dynamique dès que possible -->
@@ -40,10 +38,12 @@
                                                         <td>'.$values['nomPc'].'</td>
                                                         <td>'.$values['nomUtil'].'</td>
                                                         <td>'.$values['prenomUtil'].'</td>
-                                                        <td class="text-center"><a href="#"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> <a href="#" class=""><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a></td>
+                                                        <td class="text-center">
+                                                            <a href="index.php?act=crA&req=update1&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a>
+                                                            <a data-delete-url="index.php?act=db&req=delete&num='.$values['numPoste'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
+                                                        </td>
                                                     </tr>';
-                                            } 
-                                            ?>
+                                            } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -51,3 +51,23 @@
                         </div>
                     </div>
                 </main>
+
+<!-- ************************  PARTIE SUPPRESSION VIA MODAL *************************** -->
+<div class="modal fade" id="modalSuppr" tabindex="-1" role="dialog" aria-labelledby="modalSupprLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalSupprLabel">Default Bootstrap Modal</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Attention vous êtes sur le point de supprimer un poste!</p>
+                <p>Etes-vous sur de vouloir le supprimer?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                <a id="validID" class="btn btn-primary" type="button">Supprimer</a>
+            </div>
+        </div>
+    </div>
+</div>

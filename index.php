@@ -16,30 +16,40 @@
         header("location:./index.php?act=acc");
     }else{
         switch ($pAction){
+            //Partie Affichage et gestion login
             case "acc" :
                 include './controlers/cAccueil.php';
             break;
             case "log" :
                 include './controlers/cLogin.php';
             break;
+
+            //Partie gestion dashboard page
             case "db" :
                 include './controlers/cDashboard.php';
-            break;
-            case "atr" :
-                include './controlers/cCrudAttr.php';
             break;
             case "utl" :
                 include './controlers/cUtilisateur.php';
             break;
-            case "crU" :
-                include './controlers/cCrudUser.php';
-            break;
             case "odt" :
                 include './controlers/cOrdinateur.php';
+            break;
+            case "atr" :
+                include './controlers/cCrudAttr.php';
+            break;
+
+            //Partie gestion CRUD
+            case "crU" :
+                include './controlers/cCrudUser.php';
             break;
             case "crO" :
                 include './controlers/cCrudOrdi.php';
             break;
+            case "crA" :
+                include './controlers/cCrudAttr.php';
+            break;
+
+            //Parti Autre gestion
             case "dcx" :
                 include './controlers/cDeconnexion.php';
             break;

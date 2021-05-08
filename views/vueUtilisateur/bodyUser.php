@@ -8,13 +8,9 @@
                                 Liste des utilisateurs existants
                             </div>
                         <div class="card-body">
-                            <div class="float-right" >
-                                <p class="font-weight-bold">
-                                    <a href="index.php?act=crU&req=create">
-                                        <i class="fas fa-user-plus fa-2x" style="color:green"></i>
-                                    </a>
-                                </p>
-                            </div>
+                            <p class="font-weight-bold">
+                                <a href="index.php?act=crU&req=create" type="button" class="btn btn-success"><i class="fas fa-user-plus" ></i> Ajouter</a>
+                            </p>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -24,10 +20,10 @@
                                             <th>Adresse</th>
                                             <th>Code postal</th>
                                             <th>Ville</th>
-                                            <th>Action</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody> <!-- a transformer en tableau dynamique dès que possible-->
+                                    <tbody> 
                                     <?php $tabUser;
                                         //parcourt l'ensemble du tableau attr
                                         foreach($tabUser as $values){
@@ -38,8 +34,8 @@
                                                     <td>'.$values['codeP'].'</td>
                                                     <td>'.$values['ville'].'</td>
                                                     <td class="text-center">
-                                                        <a href="index.php?act=crU&req=update&num='.$values['numUtil'].' "><i class="fas fa-edit fa-2x" style="color:orange"></i></a> 
-                                                        <a data-delete-url="index.php?act=utl&req=delete&num='.$values['numUtil'].' " type="button" data-toggle="modal" data-target="#modalSuppr" ><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
+                                                        <a href="index.php?act=crU&req=update&num='.$values['numUtil'].' " class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> 
+                                                        <a data-delete-url="index.php?act=utl&req=delete&num='.$values['numUtil'].' " class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr" ><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
                                                     </td>
                                                 </tr>';
                                         }
@@ -53,7 +49,6 @@
 
 
 <!-- ************************  PARTIE SUPPRESSION VIA MODAL *************************** -->
-<!-- Modal -->
 <div class="modal fade" id="modalSuppr" tabindex="-1" role="dialog" aria-labelledby="modalSupprLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
