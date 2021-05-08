@@ -9,6 +9,7 @@
     //blindage du paramètre act=db
     if(!empty($pAction) && $pAction == "db"){
 
-        $tabAttr = readAttr();
+        $tabAttr = getAllAttrNotCancel();
+        
         $view = "vDashboard";
     }

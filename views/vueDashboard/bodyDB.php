@@ -10,7 +10,7 @@
                             </div>
                             <div class="card-body">
                                 <p class="font-weight-bold " >
-                                    <a href="#" type="button" class="btn btn-success"><i class="fas fa-plus-square"></i> Attribuer</a>
+                                    <a href="index.php?act=crA&req=create" type="button" class="btn btn-success"><i class="fas fa-plus-square"></i> Attribuer</a>
                                 </p>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -39,7 +39,7 @@
                                                         <td>'.$values['nomUtil'].'</td>
                                                         <td>'.$values['prenomUtil'].'</td>
                                                         <td class="text-center">
-                                                            <a href="index.php?act=crA&req=update1&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a>
+                                                            <a href="index.php?act=crA&req=update&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a>
                                                             <a data-delete-url="index.php?act=db&req=delete&num='.$values['numPoste'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
                                                         </td>
                                                     </tr>';
@@ -57,16 +57,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalSupprLabel">Default Bootstrap Modal</h5>
+                <h5 class="modal-title" id="modalSupprLabel"></h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <p>Attention vous êtes sur le point de supprimer un poste!</p>
-                <p>Etes-vous sur de vouloir le supprimer?</p>
+                <p>Attention vous êtes sur le point de annuler la réservation!</p>
+                <p>Etes-vous sur de vouloir annuler?</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                <a id="validID" class="btn btn-primary" type="button">Supprimer</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Retour</button>
+                <a id="validID" class="btn btn-primary" type="button">Annuler</a>
             </div>
         </div>
     </div>

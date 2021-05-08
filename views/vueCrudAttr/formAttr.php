@@ -9,10 +9,20 @@
                             case "create":
                         ?> <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h3 class="text-center font-weight-bold my-4">Création d'un utilisateur</h3>
+                                    <h3 class="text-center font-weight-bold my-4">Réservation d'un poste</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action=" index.php?act=crU&req=create" method="post">
+                                    <form action=" index.php?act=crA&req=create" method="post">
+                                    <div class="form-group">
+                                        <label for="nomPosteInfo">Nom Poste</label>
+                                        <select name="numPost" class="form-control" id="nomPosteInfo">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
                                         <div class="form-group">
                                             <label class="large mb-1 font-weight-bold" for="nomUtilisateur">Nom</label>
                                             <input class="form-control py-4" name="nomUser" id="nomUtilisateur" type="text" placeholder="Entrer le nom de l'utilisateur" required/>

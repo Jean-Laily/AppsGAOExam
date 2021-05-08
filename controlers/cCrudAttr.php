@@ -11,20 +11,15 @@
         
         //réception du 2em paramètre get pour le CRUD
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
-        $id_user =  isset($_GET['num']) ? $_GET['num'] : null;
+        $id =  isset($_GET['num']) ? $_GET['num'] : null;
         
         //lecture des tous utilisateurs
-        $tabUserId = getUserID($id_user);
+        // $tab = get($id_);
 
         //réception des variables en post du formulaire
-        $idUsers = isset($_POST['idUser']) ? htmlspecialchars($_POST['idUser']) : null;
+        $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : null;
         $nomUser = isset($_POST['nomUser']) ? htmlspecialchars($_POST['nomUser']) : null;
         $prenomUser = isset($_POST['prenomUser']) ? htmlspecialchars($_POST['prenomUser']) : null;
-        $adressUser = isset($_POST['adressUser']) ? htmlspecialchars($_POST['adressUser']) : null;
-        $cpUser = isset($_POST['cpUser']) ? htmlspecialchars($_POST['cpUser']) : null;
-        $citieUser = isset($_POST['citieUser']) ? htmlspecialchars($_POST['citieUser']) : null;
-        $mailUser = isset($_POST['mailUser']) ? htmlspecialchars($_POST['mailUser']) : null;
-        $passUser = isset($_POST['passUser']) ? htmlspecialchars($_POST['passUser']) : null;
 
         if(!empty($pRequete)){
             
@@ -67,5 +62,5 @@
             }
         }
 
-        $view = "vCrudUser";
+        $view = "vCrudAttr";
     }
