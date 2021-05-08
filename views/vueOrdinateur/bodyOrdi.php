@@ -21,7 +21,7 @@
                                             </tr>
                                         </thead>
                                         <tbody> <!-- a transformer en tableau dynamique dès que possible-->
-                                        <?php $tabOrdiOk;
+                                        <?php 
                                             //parcourt l'ensemble du tableau attr
                                             foreach($tabOrdiOk as $values){
                                             echo' <tr>
@@ -55,7 +55,7 @@
                                             </tr>
                                         </thead>
                                         <tbody> <!-- a transformer en tableau dynamique dès que possible-->
-                                        <?php $tabOrdiKo;
+                                        <?php
                                             //parcourt l'ensemble du tableau attr
                                             foreach($tabOrdiKo as $values){
                                             echo' <tr>

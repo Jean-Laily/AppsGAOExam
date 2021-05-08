@@ -1,5 +1,7 @@
 <?php
     include 'models/managerCrudAttr.php';
+    include 'models/managerCrudUser.php';
+    include 'models/managerCrudOrdi.php';
 
     //si la variable session[userId] && session[userPw] n'est pas existant alors redirection vers la page login
     if(!isset($_SESSION["userId"]) && !isset($_SESSION["userPw"])){
@@ -13,13 +15,19 @@
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
         $id =  isset($_GET['num']) ? $_GET['num'] : null;
         
-        //lecture des tous utilisateurs
-        // $tab = get($id_);
+        //lecture de tout les postes attribués
+        $tabPostAttr = getAllAttrNotCancel();
+        $tabPostOk= getAllOrdiWithOk();
+        $tabUser = getAllUser();
+        $tabCreneau = getAllCreneau();
 
         //réception des variables en post du formulaire
         $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : null;
-        $nomUser = isset($_POST['nomUser']) ? htmlspecialchars($_POST['nomUser']) : null;
-        $prenomUser = isset($_POST['prenomUser']) ? htmlspecialchars($_POST['prenomUser']) : null;
+        $posteName = isset($_POST['nomPoste']) ? htmlspecialchars($_POST['nomPoste']) : null;
+        $userName = isset($_POST['utilisateurName']) ? htmlspecialchars($_POST['utilisateurName']) : null;
+        $libCreneau = isset($_POST['creneauHr']) ? htmlspecialchars($_POST['creneauHr']) : null;
+        $dateValide = isset($_POST['dateChoisi']) ? htmlspecialchars($_POST['dateChoisi']) : null;
+
 
         if(!empty($pRequete)){
             
@@ -27,12 +35,27 @@
                 
                 case 'create':
                     //on controle que toute les variables en post ont bien une valeur
-                    if(!empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser) && !empty($mailUser) && !empty($passUser)){
+                    if(!empty($posteName) && !empty($userName) && !empty($libCreneau)){
+                        foreach($tabPostOk as $value){
+                            if($posteName == $value['nomPc']){
+                                $idPost = $value['numPoste'];
+                            }
+                            foreach($tabUser as $value){
+                                if($userName == $value['nomUtil']){
+                                    $idUser = $value['numUtil'];
+                                }
+                                foreach($tabCreneau as $value){
+                                    if($libCreneau == $value['libelle']){
+                                        $idCreneau = $value['numCreneau'];
+                                    } 
+                                }
+                            }
+                        }
                         //appel de la fonction pour la création d'un utilisateur en lui passant tous les paramètre nécessaire
-                        $requeteOk = createUser($nomUser, $prenomUser, $adressUser, $cpUser, $citieUser, $mailUser, $passUser);
-                        
+                        $requeteOk = createAttr($idPost, $idUser, $idCreneau, $dateValide);
+
                         if($requeteOk){ // est vrai alors on retourne vers la page des utilisateurs
-                            header("location: index.php?act=utl&cfm=10");
+                            header("location: index.php?act=db&cfm=10");
                         }
                     }
                     break;

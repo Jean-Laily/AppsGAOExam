@@ -25,7 +25,7 @@
                                             </tr>
                                         </thead>
                                         <tbody> <!-- a transformer en tableau dynamique dès que possible -->
-                                            <?php $tabAttr;
+                                            <?php 
                                             //formatter la date reçus par Mysql en version FR
                                             $datefmt = new IntlDateFormatter('fr_FR', NULL, NULL, NULL, NULL, 'dd MMMM yyyy');
                                             //parcourt l'ensemble du tableau attr

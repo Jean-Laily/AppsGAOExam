@@ -24,7 +24,7 @@
                                         </tr>
                                     </thead>
                                     <tbody> 
-                                    <?php $tabUser;
+                                    <?php 
                                         //parcourt l'ensemble du tableau attr
                                         foreach($tabUser as $values){
                                             echo'<tr>

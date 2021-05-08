@@ -5,7 +5,6 @@
                         <div class="col-lg-8">
                         <?php 
                         switch($pRequete){
-
                             case "create":
                         ?> <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
@@ -105,8 +104,8 @@
                                     </form>
                                 </div>
                             </div>
-                        
-                        <?php }   break; }?>
+                        <?php }   
+                        break; }?>
                         </div>
                     </div>
                 </div>

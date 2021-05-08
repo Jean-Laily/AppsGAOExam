@@ -5,7 +5,6 @@
                         <div class="col-lg-8">
                         <?php
                         switch($pRequete){
-
                             case "create":
                             ?> <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
@@ -32,7 +31,6 @@
                     <?php   break;
                             
                             case "update1":
-                                $tabOrdiIdOk;
                                 foreach($tabOrdiIdOk as $valeur){
                                 ?> <div class="card shadow-lg border-0 rounded-lg mt-5">
                                         <div class="card-header">
@@ -69,7 +67,6 @@
                                 <?php }  
                             break; 
                             case "update2":
-                                $tabOrdiIdKo;
                                 foreach($tabOrdiIdKo as $valeur){
                                 ?> <div class="card shadow-lg border-0 rounded-lg mt-5">
                                         <div class="card-header">
