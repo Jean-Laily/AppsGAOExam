@@ -102,16 +102,15 @@
         $msg = false;
 
         try{
-            $deleteUser = 'UPDATE utilisateur 
-                                SET supprimer = :suppr 
-                                WHERE numUtil = :idUser ';
+            $sql = 'DELETE FROM attribuer WHERE numPoste = :idP  AND numCreneau = :idC AND numUtil = :idU';
 
-            $requete = $pdo->prepare($deleteUser);
+            $requete = $pdo->prepare($sql);
 
             //préparation avec méthode bindParam la liaison entre le marqueur et la variable
-            $requete->bindParam(':suppr',$supprimer, PDO::PARAM_INT );
-            $requete->bindParam(':idUser',$id, PDO::PARAM_INT);
-
+            $requete->bindParam(':idP',$pNumPoste, PDO::PARAM_INT );
+            $requete->bindParam(':idC',$pNumCreno, PDO::PARAM_INT);
+            $requete->bindParam(':idU',$pNumUtil, PDO::PARAM_INT);
+            
             $requete->execute();
             $msg = true;
 

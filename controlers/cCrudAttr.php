@@ -62,32 +62,12 @@
 
                         if($requeteOk){ // est vrai alors on retourne vers le dashboard
                             header("location: index.php?act=db&cfm=10");
+                        }else{
+                            header('location: index.php?act=crA&req=create&err=21');
                         }
-                        // else{
-                        //     header('location: index.php?act=crA&req=create&err=21');
-                        // }
                     }
                     break;
                     
-                //     case 'update':
-                //     //condition pour la requête update
-                //     if(!empty($idUsers) && !empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser)){
-
-                //         //appel de la fonction updateFiche pour la 1er partie du formulaire
-                //         $infoUserValid = updateUserFiche1($idUsers, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
-                //         if($infoUserValid){
-                //             header("location: index.php?act=utl&cfm=11");
-                //         }
-                //     }
-
-                //     if(!empty($mailUser) && !empty($passUser)){
-                //         $infoUserValid2 = updateUserFiche2($id_user, $mailUser,$passUser);
-                //         if($infoUserValid2){
-                //             header("location: index.php?act=utl&cfm=13");
-                //         }
-                //     }
-                    
-                // break;
                 default:
                     header("location: index.php?act=404");
                 break;

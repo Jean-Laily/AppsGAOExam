@@ -24,7 +24,7 @@
                         $supprOk = deleteAttr($pNumPoste,$pNumCreno,$pNumUtil);
                         
                         if($supprOk){
-                            header("location: index.php?act=utl&cfm=12");
+                            header("location: index.php?act=db&cfm=12");
                         }
                     }
                 break;
