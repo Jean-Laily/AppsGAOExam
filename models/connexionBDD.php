@@ -26,6 +26,7 @@
 
             //instantiation de l'objet PDO et de ses paramètres requis
             $pdo = new PDO($serveur, $login, $pass); 
+            // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         }catch(PDOException $e){
             // echo 'Échec de la connection : ';

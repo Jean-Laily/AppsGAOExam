@@ -9,8 +9,13 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Se connecter</h3></div>
                                     <div class="card-body">
                                         <form action=" index.php?act=log" method="post">
+                                            <div class="msgErreur">
+                                            <?php if (isset($pErreur) && $pErreur == "53"): ?>
+                                                <p><strong> Identifiant ou mot de pass incorrect ! </strong></p>
+                                            <?php endif ?> 
+                                            </div>
                                             <div class="form-group">
-                                                <label class="large mb-1 font-weight-bold" for="inputUsername">Nom utilisateur</label><div class="msgErreur"><?php ?></div>
+                                                <label class="large mb-1 font-weight-bold" for="inputUsername">Nom utilisateur</label>
                                                 <input class="form-control py-4" name="userID" id="inputUsername" type="text" placeholder="Entrer un nom d'utilisateur" required/>
                                             </div>
                                             <div class="form-group">

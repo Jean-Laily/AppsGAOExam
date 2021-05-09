@@ -22,17 +22,25 @@
                                         </thead>
                                         <tbody> <!-- a transformer en tableau dynamique dès que possible-->
                                         <?php 
+                                            $aucunPostOK = true;
                                             //parcourt l'ensemble du tableau attr
                                             foreach($tabOrdiOk as $values){
-                                            echo' <tr>
-                                                    <td>'.$values['nomPc'].'</td>                                                
-                                                    <td>'.$values['etatPc'].'</td>
-                                                    <td class="text-center">
-                                                        <a href="index.php?act=crO&req=update1&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> 
-                                                        <a data-delete-url="index.php?act=odt&req=delete&num='.$values['numPoste'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
-                                                    </td>
-                                                </tr>';
+                                                if(!empty($tabOrdiOk)){
+                                                    echo' <tr>
+                                                            <td>'.$values['nomPc'].'</td>                                                
+                                                            <td>'.$values['etatPc'].'</td>
+                                                            <td class="text-center">
+                                                                <a href="index.php?act=crO&req=update1&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> 
+                                                                <a data-delete-url="index.php?act=odt&req=delete&num='.$values['numPoste'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
+                                                            </td>
+                                                        </tr>';
+
+                                                 $aucunPostOK = false;
+                                                }
                                             } 
+                                            if($aucunPostOK){
+                                                echo '<td colspan="3" class="text-center"><strong>Aucun poste n\'a été crée actuellement!</strong></td>';
+                                            }
                                             ?>
                                         </tbody>
                                     </table>
@@ -54,19 +62,28 @@
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody> <!-- a transformer en tableau dynamique dès que possible-->
+                                        <tbody>
                                         <?php
-                                            //parcourt l'ensemble du tableau attr
+                                            $aucunPostKO = true;
+                                            //parcourt l'ensemble du tableau ordi
                                             foreach($tabOrdiKo as $values){
-                                            echo' <tr>
-                                                    <td>'.$values['nomPc'].'</td>                                                
-                                                    <td>'.$values['etatPc'].'</td>
-                                                    <td class="text-center">
-                                                        <a href="index.php?act=crO&req=update2&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> 
-                                                        <a data-delete-url="index.php?act=odt&req=delete&num='.$values['numPoste'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
-                                                    </td>
-                                                </tr>';
-                                            } 
+                                                if(!empty($tabOrdiKo)){
+                                                echo' 
+                                                    <tr>
+                                                        <td>'.$values['nomPc'].'</td>                                                
+                                                        <td>'.$values['etatPc'].'</td>
+                                                        <td class="text-center">
+                                                            <a href="index.php?act=crO&req=update2&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a> 
+                                                            <a data-delete-url="index.php?act=odt&req=delete&num='.$values['numPoste'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
+                                                        </td>
+                                                    </tr>';
+
+                                                    $aucunPostKO = false;
+                                                }
+                                            }
+                                            if($aucunPostKO){
+                                                echo '<td colspan="3" class="text-center"><strong>Aucun poste n\'est en maintenance actuellement!</strong></td>';
+                                            }
                                             ?>
                                         </tbody>
                                     </table>

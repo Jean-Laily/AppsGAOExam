@@ -9,7 +9,30 @@
     //blindage du paramètre act=db
     if(!empty($pAction) && $pAction == "db"){
 
-        $tabAttr = getAllAttrNotCancel();
+        //réception des paramètre get pour supprimer
+        $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
+        $pNumPoste = isset($_GET['numP']) ? $_GET['numP'] : null;
+        $pNumCreno = isset($_GET['numC']) ? $_GET['numC'] : null;
+        $pNumUtil = isset($_GET['numU']) ? $_GET['numU'] : null;
+        $tabAttr = getAllAttr();
+
+        if(!empty($pRequete)){
+            switch($pRequete){
+                case 'delete':
+                    //condition pour la requête delete
+                    if(!empty($pNumPoste) && !empty($pNumCreno) && !empty($pNumUtil) ){
+                        $supprOk = deleteAttr($pNumPoste,$pNumCreno,$pNumUtil);
+                        
+                        if($supprOk){
+                            header("location: index.php?act=utl&cfm=12");
+                        }
+                    }
+                break;
+                default:
+                    header("location: index.php?act=404");
+                break;
+            }
+        }
         
         $view = "vDashboard";
     }

@@ -11,6 +11,7 @@
     //création du paramètre action 
     $pAction = isset($_GET['act'])? $_GET['act'] : null;
     $pErreur = isset($_GET['err'])? $_GET['err'] : null;
+    $pConfirm = isset($_GET['cfm'])? $_GET['cfm'] : null;
 
     if(!isset($_GET['act'])){
         header("location:./index.php?act=acc");

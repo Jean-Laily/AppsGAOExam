@@ -40,7 +40,7 @@
                                                         <td>'.$values['prenomUtil'].'</td>
                                                         <td class="text-center">
                                                             <a href="index.php?act=crA&req=update&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a>
-                                                            <a data-delete-url="index.php?act=db&req=delete&num='.$values['numPoste'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
+                                                            <a data-delete-url="index.php?act=db&req=delete&numP='.$values['numPoste'].'&numC='.$values['numCreneau'].'&numU='.$values['numUtil'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
                                                         </td>
                                                     </tr>';
                                             } ?>
@@ -61,7 +61,7 @@
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <p>Attention vous êtes sur le point de annuler la réservation!</p>
+                <p>Attention vous êtes sur le point d'annuler la réservation!</p>
                 <p>Etes-vous sur de vouloir annuler?</p>
             </div>
             <div class="modal-footer">

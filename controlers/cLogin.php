@@ -18,7 +18,6 @@
 
             header('location: index.php?act=db');
         }else{
-            
             header('location: index.php?act=acc&err=53');
         }
     }

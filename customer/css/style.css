@@ -24,7 +24,9 @@
   background-repeat: no-repeat;
   background-position: center bottom;
 }
-
 .back{
   visibility: hidden;
+}
+.msgErreur{
+  color: tomato !important;
 }

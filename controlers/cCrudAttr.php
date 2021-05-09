@@ -12,22 +12,18 @@
         
         //réception du 2em paramètre get pour le CRUD
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
-        // $pErreur = isset($_GET['req']) ? $_GET['req'] : null;
-        $id =  isset($_GET['num']) ? $_GET['num'] : null;
         
         //lecture de tout les postes attribués
-        $tabPostAttr = getAllAttrNotCancel();
+        $tabPostAttr = getAllAttr();
         $tabPostOk= getAllOrdiWithOk();
         $tabUser = getAllUser();
         $tabCreneau = getAllCreneau();
 
         //réception des variables en post du formulaire
-        $id = isset($_POST['id']) ? htmlspecialchars($_POST['id']) : null;
         $posteName = isset($_POST['nomPoste']) ? htmlspecialchars($_POST['nomPoste']) : null;
         $userName = isset($_POST['utilisateurName']) ? htmlspecialchars($_POST['utilisateurName']) : null;
         $libCreneau = isset($_POST['creneauHr']) ? htmlspecialchars($_POST['creneauHr']) : null;
         $dateValide = isset($_POST['dateChoisi']) ? htmlspecialchars($_POST['dateChoisi']) : null;
-
 
         if(!empty($pRequete)){
             
@@ -55,7 +51,7 @@
 
                         // // controle ici 
                         // foreach($tabPostAttr as $value){
-                        //     //SI un poste et une horaire est deja réservé par le même utilisateur ALORS message d'erreur
+                        //     //SI un poste et une horaire est déjà réservé par le même utilisateur ALORS message d'erreur
                         //     if($idPost == $value['numPoste']  && $idUser == $value['numUtil'] && $idCreneau == $value['numCreneau']){
                         //         header('location: index.php?act=crA&req=create&err=20');
                         //     }
@@ -64,31 +60,34 @@
                         //appel de la fonction pour la création d'un utilisateur en lui passant tous les paramètre nécessaire
                         $requeteOk = createAttr($idPost, $idUser, $idCreneau, $dateValide);
 
-                        if($requeteOk){ // est vrai alors on retourne vers la page des utilisateurs
+                        if($requeteOk){ // est vrai alors on retourne vers le dashboard
                             header("location: index.php?act=db&cfm=10");
                         }
+                        // else{
+                        //     header('location: index.php?act=crA&req=create&err=21');
+                        // }
                     }
                     break;
                     
-                    case 'update':
-                    //condition pour la requête update
-                    if(!empty($idUsers) && !empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser)){
+                //     case 'update':
+                //     //condition pour la requête update
+                //     if(!empty($idUsers) && !empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser)){
 
-                        //appel de la fonction updateFiche pour la 1er partie du formulaire
-                        $infoUserValid = updateUserFiche1($idUsers, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
-                        if($infoUserValid){
-                            header("location: index.php?act=utl&cfm=11");
-                        }
-                    }
+                //         //appel de la fonction updateFiche pour la 1er partie du formulaire
+                //         $infoUserValid = updateUserFiche1($idUsers, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
+                //         if($infoUserValid){
+                //             header("location: index.php?act=utl&cfm=11");
+                //         }
+                //     }
 
-                    if(!empty($mailUser) && !empty($passUser)){
-                        $infoUserValid2 = updateUserFiche2($id_user, $mailUser,$passUser);
-                        if($infoUserValid2){
-                            header("location: index.php?act=utl&cfm=13");
-                        }
-                    }
+                //     if(!empty($mailUser) && !empty($passUser)){
+                //         $infoUserValid2 = updateUserFiche2($id_user, $mailUser,$passUser);
+                //         if($infoUserValid2){
+                //             header("location: index.php?act=utl&cfm=13");
+                //         }
+                //     }
                     
-                break;
+                // break;
                 default:
                     header("location: index.php?act=404");
                 break;
