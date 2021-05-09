@@ -14,7 +14,8 @@
 
         $sql = ' SELECT * 
                     FROM utilisateur
-                    WHERE supprimer = 0';
+                    WHERE supprimer = 0
+                    ORDER BY date_crea DESC';
 
         $requetes = $pdo->prepare($sql);
         $requetes->execute();

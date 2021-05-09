@@ -49,14 +49,14 @@
                         //appel de la fonction updateFiche pour la 1er partie du formulaire
                         $infoUserValid = updateUserFiche1($idUsers, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
                         if($infoUserValid){
-                            header("location: index.php?act=utl&cfm=11");
+                            header("location: index.php?act=utl&cfm=31");
                         }
                     }
 
                     if(!empty($mailUser) && !empty($passUser)){
                         $infoUserValid2 = updateUserFiche2($id_user, $mailUser,$passUser);
                         if($infoUserValid2){
-                            header("location: index.php?act=utl&cfm=13");
+                            header("location: index.php?act=utl&cfm=32");
                         }
                     }
                     

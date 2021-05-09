@@ -1,8 +1,30 @@
-<div id="layoutSidenav_content">
+            <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">Gestion Ordinateur</h1>
                         <br>
+                        <?php if(isset($pConfirm) && $pConfirm == 21): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> Le poste a bien été crée ! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php elseif(isset($pConfirm) && $pConfirm == 22): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> lLe poste a bien été modifié ! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php elseif(isset($pConfirm) && $pConfirm == 23): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> Le poste a bien été supprimé ! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif?> 
                         <div class="card card-waves ">
                             <div class="card-header">
                                 Liste des postes existants

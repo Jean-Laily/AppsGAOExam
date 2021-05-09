@@ -34,7 +34,7 @@
                         $requeteOk = createOrdi($nomOrdi, $etatOrdi);
                         
                         if($requeteOk){ // est vrai alors on retourne vers la page des utilisateurs
-                            header("location: index.php?act=odt&cfm=10");
+                            header("location: index.php?act=odt&cfm=21");
                         }
                     }
                     break;
@@ -47,7 +47,7 @@
                         $infoUserValid = updateOrdiOk($idPost, $nomOrdi, $etatOrdi);
 
                         if($infoUserValid){
-                            header("location: index.php?act=odt&cfm=11");
+                            header("location: index.php?act=odt&cfm=22");
                         }
                     }
                 break;
@@ -59,7 +59,7 @@
                         $infoUserValid = updateOrdiKo($idPost, $nomOrdi, $etatOrdi);
 
                         if($infoUserValid){
-                            header("location: index.php?act=odt&cfm=11");
+                            header("location: index.php?act=odt&cfm=22");
                         }
                     }
                 break;

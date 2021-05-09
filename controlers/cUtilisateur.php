@@ -12,6 +12,7 @@
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
         $id_user =  isset($_GET['num']) ? $_GET['num'] : null;
         
+        
         //lecture des tous utilisateurs
         $tabUser = getAllUser();
 
@@ -23,7 +24,7 @@
                     if(!empty($id_user)){
                         $supprOk = deleteUser($id_user);
                         if($supprOk){
-                            header("location: index.php?act=utl&cfm=12");
+                            header("location: index.php?act=utl&cfm=33");
                         }
                     }
                 break;

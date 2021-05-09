@@ -63,7 +63,7 @@
                         if($requeteOk){ // est vrai alors on retourne vers le dashboard
                             header("location: index.php?act=db&cfm=10");
                         }else{
-                            header('location: index.php?act=crA&req=create&err=21');
+                            header('location: index.php?act=crA&req=create&err=11');
                         }
                     }
                     break;

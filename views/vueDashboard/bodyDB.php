@@ -4,6 +4,22 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">Gestion Attribution</h1>
                         <br>
+                        <?php if(isset($pConfirm) && $pConfirm == 11): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> La réservation a bien été crée ! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php elseif(isset($pConfirm) && $pConfirm == 13): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> La réservation a bien été annulé! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif ?>
+
                         <div class="card card-waves ">
                             <div class="card-header">
                                 Liste d'attribution des postes
@@ -40,7 +56,7 @@
                                                         <td>'.$values['prenomUtil'].'</td>
                                                         <td class="text-center">
                                                             <a href="index.php?act=crA&req=update&num='.$values['numPoste'].'" class="pr-2"><i class="fas fa-edit fa-2x" style="color:orange"></i></a>
-                                                            <a data-delete-url="index.php?act=db&req=delete&numP='.$values['numPoste'].'&numC='.$values['numCreneau'].'&numU='.$values['numUtil'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="fas fa-trash-alt fa-2x" style="color:Tomato"></i></a>
+                                                            <a data-delete-url="index.php?act=db&req=delete&numP='.$values['numPoste'].'&numC='.$values['numCreneau'].'&numU='.$values['numUtil'].'" class="pl-2" type="button" data-toggle="modal" data-target="#modalSuppr"><i class="far fa-window-close fa-2x" style="color:Tomato"></i></a>
                                                         </td>
                                                     </tr>';
                                             } ?>

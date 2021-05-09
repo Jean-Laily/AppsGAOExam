@@ -28,7 +28,7 @@
                         $supprOk = deleteOrdi($id_ordi);
 
                         if($supprOk){
-                            header("location: index.php?act=odt&cfm=12");
+                            header("location: index.php?act=odt&cfm=23");
                         }
                     }
                 break;

@@ -1,8 +1,30 @@
-<div id="layoutSidenav_content">
+            <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">Gestion Utilisateur</h1>
                         <br>
+                        <?php if(isset($pConfirm) && $pConfirm == 31): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> L'utilisateur a bien été crée ! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php elseif(isset($pConfirm) && $pConfirm == 32): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> L'utilisateur a bien été modifié ! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php elseif(isset($pConfirm) && $pConfirm == 33): ?>
+                            <div class="col alert alert-success alert-dismissible fade show" role="alert">
+                                <p><strong> L'utilisateur a bien été supprimé ! </strong></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif?> 
                         <div class="card card-waves ">
                             <div class="card-header">
                                 Liste des utilisateurs existants
