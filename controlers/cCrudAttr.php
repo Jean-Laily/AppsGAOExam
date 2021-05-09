@@ -1,7 +1,6 @@
 <?php
     include 'models/managerCrudAttr.php';
-    include 'models/managerCrudUser.php';
-    include 'models/managerCrudOrdi.php';
+
 
     //si la variable session[userId] && session[userPw] n'est pas existant alors redirection vers la page login
     if(!isset($_SESSION["userId"]) && !isset($_SESSION["userPw"])){
@@ -13,6 +12,7 @@
         
         //réception du 2em paramètre get pour le CRUD
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
+        // $pErreur = isset($_GET['req']) ? $_GET['req'] : null;
         $id =  isset($_GET['num']) ? $_GET['num'] : null;
         
         //lecture de tout les postes attribués
@@ -47,10 +47,20 @@
                                 foreach($tabCreneau as $value){
                                     if($libCreneau == $value['libelle']){
                                         $idCreneau = $value['numCreneau'];
-                                    } 
+                                        
+                                    }
                                 }
                             }
                         }
+
+                        // // controle ici 
+                        // foreach($tabPostAttr as $value){
+                        //     //SI un poste et une horaire est deja réservé par le même utilisateur ALORS message d'erreur
+                        //     if($idPost == $value['numPoste']  && $idUser == $value['numUtil'] && $idCreneau == $value['numCreneau']){
+                        //         header('location: index.php?act=crA&req=create&err=20');
+                        //     }
+
+                        // }
                         //appel de la fonction pour la création d'un utilisateur en lui passant tous les paramètre nécessaire
                         $requeteOk = createAttr($idPost, $idUser, $idCreneau, $dateValide);
 

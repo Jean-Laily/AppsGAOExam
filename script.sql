@@ -22,7 +22,7 @@ CREATE TABLE post_info(
    nomPc VARCHAR(50) NOT NULL,
    etatPc VARCHAR(50) NOT NULL,
    date_crea DATETIME NOT NULL,
-   version TINYINT(1) NOT NULL
+   versionPost TINYINT(1) NOT NULL
 );
 
 INSERT INTO post_info (numPoste, nomPc, etatPc, date_crea, version) VALUES
@@ -39,8 +39,8 @@ CREATE TABLE utilisateur(
    date_crea DATETIME NOT NULL,
    email VARCHAR(100) NOT NULL,
    passW VARCHAR(255) NOT NULL,
-   supprimer TINYINT(1) NOT NULL,
-   version TINYINT(1) NOT NULL
+   supprimer TINYINT(1) NOT NULL DEFAULT = 0,
+   versionUtil TINYINT(1) NOT NULL
 );
 
 INSERT INTO utilisateur (numUtil, nomUtil, prenomUtil, adresse, codeP, ville, date_crea, email, passW, supprimer, version) VALUES
@@ -66,9 +66,10 @@ INSERT INTO creneau_hor (numCreneau, creneauDebut, creneauFin, libelle) VALUES
 
 CREATE TABLE attribuer(
    numPoste INT(11) NOT NULL,
-   numUtil INT(11) NOT NULL,
    numCreneau INT(11) NOT NULL,
-   dateJour DATE NOT NULL
+   numUtil INT(11) NOT NULL,
+   dateJour DATE NOT NULL,
+   annuler TINYINT(1) NOT NULL DEFAULT = 0
 );
 
 INSERT INTO attribuer (numPoste, numUtil, numCreneau, dateJour) VALUES
@@ -98,7 +99,7 @@ ALTER TABLE creneau_hor
    ADD UNIQUE KEY numCreneau_UNIQUE (numCreneau);
 
 ALTER TABLE attribuer
-   ADD PRIMARY KEY(numPoste, numUtil, numCreneau),
+   ADD PRIMARY KEY(numPoste, numCreneau, numUtil),
    ADD KEY attr_poste_FK_idx (numPoste),
    ADD KEY attr_util_FK_idx (numUtil),
    ADD KEY attr_creneau_FK_idx (numCreneau);

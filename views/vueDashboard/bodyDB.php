@@ -17,8 +17,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
-                                                <th>Horaire</th>
                                                 <th>Attribué</th>
+                                                <th>Horaire</th>
                                                 <th>Nom</th>
                                                 <th>Prénom</th>
                                                 <th class="text-center">Action</th>
@@ -34,8 +34,8 @@
                                                 
                                                 echo' <tr>
                                                         <td>'.$datefmt->format($date).'</td>                                                
-                                                        <td>'.$values['libelle'].'</td>
                                                         <td>'.$values['nomPc'].'</td>
+                                                        <td>'.$values['libelle'].'</td>
                                                         <td>'.$values['nomUtil'].'</td>
                                                         <td>'.$values['prenomUtil'].'</td>
                                                         <td class="text-center">

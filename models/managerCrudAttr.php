@@ -1,5 +1,6 @@
 <?php
-    // création de plusieurs fonction pour le crud 
+    include 'models/managerCrudUser.php';
+    include 'models/managerCrudOrdi.php';
 
     /**
      * Fonction qui permet la création d'une attribution d'un pc d'un creneau et d'un utilisateur
@@ -9,11 +10,35 @@
 
         $cancel = 0;
         $estOk = false;
+        // if(!empty($dateJrs)){
+        //     try{
+            
+        //         $sql = ' SELECT *
+        //                     FROM attribuer 
+        //                     WHERE dateJour = :datJ';
 
+        //         $requetes = $pdo->prepare($sql);
+        //         $requetes->bindParam(':datJ' , $dateJrs, PDO::PARAM_STR);
+        //         $requetes->execute();
+
+        //         $tabData =  $requetes->fetchAll(PDO::FETCH_ASSOC);
+        //         echo'<pre>';
+        //             print_r($tabData);
+        //         echo'</pre>';
+        //         echo'<br/>';
+        //         foreach($tabData as $values){
+        //             if( $idPost == $values['numPoste'] && $idCreneau == $values['numCreneau']){
+        //                 header('location: index.php?act=crA&req=create&err=21');
+        //             }
+        //         }
+        //     }catch(PDOException $e) {
+        //         echo 'Échec de la requête '. $e->getMessage();
+        //     }
+        // }
         //condition de vérification lors de la réception des données si c'est pas vide alors on insert dans la bdd
         try{
           
-            $sql = "INSERT INTO post_info (numPoste, numUtil, numCreneau, dateJour, annuler) VALUES (:idPst , :idUsr , :idCrn , :dateJ, :annul) ";
+            $sql = "INSERT INTO attribuer (numPoste, numUtil, numCreneau, dateJour, annuler) VALUES (:idPst , :idUsr , :idCrn , :dateJ, :annul) ";
             
             $request = $pdo->prepare($sql);
 
@@ -24,8 +49,11 @@
             $request->bindParam(':annul' , $cancel,PDO::PARAM_INT);
             
             $request->execute();
-            var_dump($request);
-            exit;
+
+            // echo'<pre>';
+            //     print_r($request);
+            // echo'</pre>';
+            // exit;
             $estOk = true;
 
         }catch(PDOException $e) {
@@ -49,7 +77,8 @@
                     ON a.numPoste = p.numPoste
                     INNER JOIN creneau_hor as c
                     ON a.numCreneau = c.numCreneau
-                    WHERE annuler = 0 ';
+                    WHERE annuler = 0
+                    ORDER BY a.dateJour DESC, a.numCreneau ASC ';
 
         $requetes = $pdo->prepare($sql);
         $requetes->execute();
