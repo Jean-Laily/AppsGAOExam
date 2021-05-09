@@ -1,8 +1,6 @@
 <?php
-    
-    //création de la fonction permettant de contrôler si l'utilisateur est bien dans la BDD
     /**
-     * Fonction permettant de controler si l'id et mdp fourni est correspondant à celui de la database
+     * Fonction permettant de contrôler Si l'id et mdp fourni est correspondant à celui de la database
      * @return count 0 ou 1 selon le résultat
      * @param id => identifiant user
      * @param pw => password user
@@ -23,12 +21,12 @@
         
         $result = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return (count($result) == 1); //retourne 0 si vide et 1 si ok
+        return (count($result) == 1); //retourne 0 si false et 1 si ok
     }
 
     /**
      * M: Cette fonction permet de comparer un mdp donné avec un mdp hashé
-     * O: @return $passCtrl  selon le resultat il retournera soit une valeur vide soit le mot de passe hashé 
+     * O: @return $passCtrl  selon le résultat il retournera soit une valeur vide soit le mot de passe hashé 
      * I: @param $pw 
      */
     function controlePass($pw){

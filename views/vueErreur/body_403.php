@@ -1,5 +1,6 @@
 <section class="">
    <div class="container">
+   <img src="assets/media/403-error-forbidden.svg" alt="image403">
       <div class="text-center">
          <h1>Erreur 403</h1>
          <p>Serveur de base de données en dérangement, veuillez réessayer ultérieurement</p>

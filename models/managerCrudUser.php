@@ -26,8 +26,9 @@
     }
     
      /**
-     * Fonction qui permet de récupérer les informations d'un utilisateur cible
-     * @return $data array_associatif
+     * Permet de récupérer les informations d'un utilisateur précis
+     * @return data array_associatif
+     * @param id => id de l'utilisateur 
      */
     function getAllInfoWithUserID($id){
         global $pdo;
@@ -67,6 +68,8 @@
         $supprimer = 0;
         $newVersion = 0;
         $estOk = false;
+        //transform le nom de famille en majuscule
+        $nomUserUp = strtoupper($nomUser);
 
         //condition de vérification lors de la réception des données si c'est pas vide alors on insert dans la bdd
         try{
@@ -76,7 +79,7 @@
             
             $request = $pdo->prepare($sql);
 
-            $request->bindParam(':nom' , $nomUser, PDO::PARAM_STR);
+            $request->bindParam(':nom' , $nomUserUp, PDO::PARAM_STR);
             $request->bindParam(':prenom' , $prenomUser, PDO::PARAM_STR);
             $request->bindParam(':adresse' , $adressUser, PDO::PARAM_STR);
             $request->bindParam(':cp' , $cpUser, PDO::PARAM_STR);
@@ -108,24 +111,26 @@
 
         $recupVersion = "";
         $userTarget = getAllInfoWithUserID($id);
+
         foreach($userTarget as $value){
-            
             $recupVersion = $value['versionUtil'];
         }
 
         $estOk = false;
+        //transform le nom de famille en majuscule
+        $nomUserUp = strtoupper($nomUser);
 
         //condition de vérification lors de la réception des données si c'est pas vide alors on insert dans la bdd
         try{
             $recupVersion ++;
 
             $sql = "UPDATE utilisateur 
-                        SET nomUtil = :nom , prenomUtil = :prenom, adresse = :adres, codeP = :cp, ville = :citie, versionUtil = :vers
+                        SET nomUtil = :nom, prenomUtil = :prenom, adresse = :adres, codeP = :cp, ville = :citie, versionUtil = :vers
                         WHERE numUtil = :idUser";
             
             $request = $pdo->prepare($sql);
 
-            $request->bindParam(':nom' , $nomUser, PDO::PARAM_STR);
+            $request->bindParam(':nom' , $nomUserUp, PDO::PARAM_STR);
             $request->bindParam(':prenom' , $prenomUser, PDO::PARAM_STR);
             $request->bindParam(':adres' , $adressUser, PDO::PARAM_STR);
             $request->bindParam(':cp' , $cpUser, PDO::PARAM_STR);
@@ -149,7 +154,7 @@
      * Permet la modification de l'email et le mot de pass d'un utilisateur 
      * 
      */
-    function updateUserFiche2($id = null,$mailUser, $passUser){
+    function updateUserFiche2($id,$mailUser, $passUser){
         global $pdo;
 
         $estOk = false;
@@ -174,9 +179,7 @@
         }catch(PDOException $e) {
 	    	echo 'Échec de la requête '. $e->getMessage();
 	    }
-
         return $estOk;
-        
     }
 
 
