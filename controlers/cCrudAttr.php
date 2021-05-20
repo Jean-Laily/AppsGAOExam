@@ -61,9 +61,9 @@
                         $requeteOk = createAttr($idPost, $idUser, $idCreneau, $dateValide);
 
                         if($requeteOk){ // est vrai alors on retourne vers le dashboard
-                            header("location: index.php?act=db&cfm=10");
+                            header("location: index.php?act=db&cfm=11");
                         }else{
-                            header('location: index.php?act=crA&req=create&err=11');
+                            header('location: index.php?act=crA&req=create&err=101');
                         }
                     }
                     break;

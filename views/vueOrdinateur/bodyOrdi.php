@@ -12,7 +12,7 @@
                 </div>
             <?php elseif(isset($pConfirm) && $pConfirm == 22): ?>
                 <div class="col alert alert-success alert-dismissible fade show" role="alert">
-                    <p><strong> lLe poste a bien été modifié ! </strong></p>
+                    <p><strong> Le poste a bien été modifié ! </strong></p>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

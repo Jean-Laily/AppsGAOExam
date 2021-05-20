@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <form action=" index.php?act=crA&req=create" method="post">
                                 <div class="msgErreur">
-                                <?php if (isset($pErreur) && $pErreur == 21): ?>
+                                <?php if (isset($pErreur) && $pErreur == 101): ?>
                                     <p><strong> Erreur le poste et le créneau choisi est déjà réservé par un utilisateur ! </strong></p>
                                 <?php endif ?> 
                                 </div>

@@ -1,5 +1,5 @@
 <body class="sb-nav-fixed">
-        <nav class="row sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="row sb-topnav navbar navbar-expand navbar-dark">
             <a class="navbar-brand text-center" href="./"><img src="./assets/logo/logo.png" alt="logo" width="80px" height="40px"></a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <div class="navbar-nav ml-auto dropdown">

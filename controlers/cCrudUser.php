@@ -8,7 +8,7 @@
 
     //blindage du paramètre act=crU
     if(!empty($pAction) && $pAction == "crU"){
-        
+
         //réception du 2em paramètre get pour le CRUD
         $pRequete = isset($_GET['req']) ? $_GET['req'] : null;
         $id_user =  isset($_GET['num']) ? $_GET['num'] : null;
@@ -37,7 +37,7 @@
                         $requeteOk = createUser($nomUser, $prenomUser, $adressUser, $cpUser, $citieUser, $mailUser, $passUser);
                         
                         if($requeteOk){ // est vrai alors on retourne vers la page des utilisateurs
-                            header("location: index.php?act=utl&cfm=10");
+                            header("location: index.php?act=utl&cfm=31");
                         }
                     }
                 break;
@@ -47,17 +47,16 @@
                     if(!empty($idUsers) && !empty($nomUser) && !empty($prenomUser) && !empty($adressUser) && !empty($cpUser) && !empty($citieUser)){
 
                         //appel de la fonction updateFiche pour la 1er partie du formulaire
-                        $infoUserValid = updateUserFiche1($idUsers, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);
-                        if($infoUserValid){
-                            header("location: index.php?act=utl&cfm=31");
-                        }
+                        $ficheUser1 = updateUserFiche1($idUsers, $nomUser, $prenomUser, $adressUser, $cpUser, $citieUser);  
                     }
 
                     if(!empty($mailUser) && !empty($passUser)){
-                        $infoUserValid2 = updateUserFiche2($id_user, $mailUser,$passUser);
-                        if($infoUserValid2){
-                            header("location: index.php?act=utl&cfm=32");
-                        }
+                         //appel de la fonction updateFiche2 pour la 2eme partie du formulaire
+                        $ficheUser2 = updateUserFiche2($id_user, $mailUser,$passUser); 
+                    }
+
+                    if(isset($ficheUser1) || isset($ficheUser2)){
+                        header("location: index.php?act=utl&cfm=32");
                     }
                     
                 break;
