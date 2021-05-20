@@ -12,6 +12,8 @@
                                         <div class="msgErreur">
                                         <?php if (isset($pErreur) && $pErreur == "53"): ?>
                                             <p><strong> Identifiant ou mot de pass incorrect ! </strong></p>
+                                        <?php elseif (isset($pErreur) && $pErreur == "50"): ?>
+                                            <p class="text-success text-center"><strong> Vous avez bien été déconnecter ! </strong></p>
                                         <?php endif ?> 
                                         </div>
                                         <div class="form-group">

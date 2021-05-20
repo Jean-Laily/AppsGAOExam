@@ -2,4 +2,4 @@
    session_unset();
    session_destroy();
    //redirection vers la page de login
-   header("location:index.php");
+   header("location:index.php?act=acc&err=50");
