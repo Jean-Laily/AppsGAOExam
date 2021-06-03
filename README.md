@@ -1,6 +1,4 @@
 # AppsGAOExam
-Developpement d'une application web avec base de données pour la gestion d'attribution de poste informatique dans un centre culturel.
-
 Context du test:
 Créer une application sécurisée qui permet de gérer l’attribution des postes informatiques à des
 visiteurs d’un centre culturel sur les horaires d’ouvertures
